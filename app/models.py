@@ -1,4 +1,4 @@
-from app import db
+/''
 
 class Blogpost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
