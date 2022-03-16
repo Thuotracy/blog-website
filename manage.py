@@ -1,8 +1,10 @@
-from app import  db,app
+from app import  db,create_app
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
-from app import Blogpost
+from app.models import Blogpost
 
+
+app=create_app('development')
 manager = Manager(app)
 migrate = Migrate(app, db)
 manager.add_command('server', Server)

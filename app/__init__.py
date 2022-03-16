@@ -29,7 +29,7 @@ def create_app(config_name):
     login_manager.init_app(app)
     from .views import views
     app.register_blueprint(views, url_prefix= "/")
-    from models import Blogpost
+    from .models import Blogpost
     # @login_manager.user_loader
     # def load_user(user_id):
     #     return User.query.get(int(id))
