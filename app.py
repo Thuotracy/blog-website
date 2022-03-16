@@ -1,11 +1,12 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/tracy/Downloads/flask_blog-master (1)/flask_blog-master/blog.db'
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/tracy/Downloads/flask_blog-master (1)/flask_blog-master/blog.db'
+app.config['SQLALCHEMY_DATABASE_URI']= 'postgresql + psycopg2://tracy:wangari775@localhost/blog'
 
 db = SQLAlchemy(app)
 
@@ -20,7 +21,7 @@ class Blogpost(db.Model):
 @app.route('/')
 def index():
     posts = Blogpost.query.order_by(Blogpost.date_posted.desc()).all()
-
+    
     return render_template('index.html', posts=posts)
 
 @app.route('/about')
@@ -50,6 +51,6 @@ def addpost():
     db.session.commit()
 
     return redirect(url_for('index'))
-
+# from db import db
 if __name__ == '__main__':
     app.run(debug=True)
