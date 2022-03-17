@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="col-md-12" style="background-color: rgb(134, 179, 218);">
+    <h3 style="color: red;">
+      {{text |safe}}
+    </h3>
+    <form action="{{url_for('views.success')}}" method="post">
+      <div class="container">
+        <h1>Register</h1>
+        <p style="color: white;">Please fill in this form to create an account.</p>
+        <hr>
+        <label for="email"><b>User Name</b></label>
+        <input type="text" placeholder="Enter User Name" name="username" id="username" required><br>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required><br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw1" id="psw" required><br>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw2" id="psw-repeat"
+        required>
+        <hr>
+        <button type="submit" class="registerbtn">Register</button>
+      <div class="container signin">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
