@@ -1,0 +1,36 @@
+{% extends 'bootstrap/base.html'%}
+
+
+  <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+  <body>
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
+
+   
+
+    
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; Your Website 2022</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{{ url_for('static', filename='clean-blog.min.js') }}"></script>
+
+  </body>
+
+</html>
+

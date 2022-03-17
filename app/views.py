@@ -2,7 +2,6 @@ from flask import render_template,url_for,Blueprint,request,redirect
 from datetime import datetime
 from .models import Blogpost
 from app import db
-from app import create_app
 
 views = Blueprint('views',__name__)
 
@@ -26,16 +25,19 @@ def post(post_id):
 def add():
     return render_template('add.html')
 
-@views.route('/addpost', methods=['POST'])
+@views.route('/addpost', methods=['POST','GET'])
 def addpost():
-    title = request.form['title']
-    subtitle = request.form['subtitle']
-    author = request.form['author']
-    content = request.form['content']
+        if request.method == 'POST':
+            title = request.form.get('title')
+            subtitle = request.form.get('subtitle')
+            author = request.form.get('author')
+            content = request.form.get('content')
 
-    post = Blogpost(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
+            post = Blogpost(title=title,   subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
 
-    db.session.add(post)
-    db.session.commit()
+            db.session.add(post)
+            db.session.commit()
 
-    return redirect(url_for('index'))
+            return redirect(url_for('views.index'))
+
+        return render_template('add.html')
